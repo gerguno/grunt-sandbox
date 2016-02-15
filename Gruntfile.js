@@ -34,6 +34,19 @@ module.exports = function(grunt) {
 					'dist/js/all.min.js' : ['dist/js/all.js']
 				}
 			}
+		},
+		less: {
+			production: {
+			    options: {
+			      paths: ["style/"],
+			      plugins: [
+				      new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
+			      ]
+			    },
+			    files: {
+			      "style/css/style.css": "style/less/style.less"
+				},
+  			}
 		}
 	});
 	grunt.loadNpmTasks('grunt-contrib-coffee');
@@ -41,8 +54,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-contrib-less');	
 
-	grunt.registerTask('default', ['coffee', 'concat', 'uglify', 'watch'])
+	grunt.registerTask('default', ['coffee', 'less', 'concat', 'uglify', 'watch'])
 }
 
 

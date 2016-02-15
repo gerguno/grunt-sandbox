@@ -9,7 +9,8 @@
   var obj;
 
   obj = {
-    prop: 'Lol'
+    prop: 'Lol',
+    key: 'value'
   };
 
 }).call(this);
